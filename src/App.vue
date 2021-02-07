@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <HelloWorld :j='childJson' />
+    <hr/>
+    <HelloWorld :j='parentJson' />
+    <hr/> -->
+    <HelloWorld :dir='parentJson.data' >
+    </HelloWorld>
+    
+
+
+    <!-- <ul>
+      <li v-for="item in parentJson.data" :key="item.id">
+        {{ item.name }}
+        <ul>
+          <li v-for="i in item.under_folder" :key="i.id">
+            {{ i.name }}
+            <ul>
+              <li v-for="a in i.files" :key="a.id">
+                {{ a.name }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import parent from "./server/parent.json";
+import child from "./server/child.json";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  data() {
+    return {
+      parentJson: parent,
+      childJson: child,
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
