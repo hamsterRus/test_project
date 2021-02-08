@@ -6,11 +6,11 @@
     </header>
     <main class="content">
     <ul v-for="d in dir" :key="d.id">
-      <li>
+      <li @click.self="open">
         <v-icon class="folder" name="folder"/>
             {{ d.name }}
         <ul v-for="floder in d.under_folder" :key="floder.id">
-          <li @click.self="open">
+          <li>
             <v-icon class="folder" name="folder"/>
             {{ floder.name }}
             <ul v-for="files in floder.files" :key="files.id">
@@ -52,9 +52,6 @@ export default {
   methods: {
     open() {
       this.$emit("click-floder");
-    },
-    setTypeFile(file) {
-      file.includes('.xlsx')
     }
   },
 };
