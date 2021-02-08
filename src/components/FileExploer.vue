@@ -107,6 +107,7 @@ export default {
   width: 600px;
 }
 ul {
+  margin: 0;
   padding-left: 10px;
 }
 li {
