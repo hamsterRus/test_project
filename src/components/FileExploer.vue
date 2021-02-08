@@ -33,7 +33,7 @@
         </ul>
       </li>
     </ul>
-    <pdf v-if="pdfClick" src="/git.pdf" ref="myPdfComponent"/>
+    <pdf class="pdf" v-if="pdfClick" src="/git.pdf"/>
     </main>
     
   </div>
@@ -95,9 +95,14 @@ export default {
   width: 7px;
 }
 .content{
+  display: flex;
   padding: 10px;
   border-right: 1px solid #e4e3e3;
   border-top: 1px solid #e4e3e3;
+}
+.pdf{
+  padding: 5px;
+  width: 600px;
 }
 ul {
   padding-left: 10px;
