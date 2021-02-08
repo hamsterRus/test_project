@@ -12,16 +12,22 @@
             <v-icon class="folder" name="folder"/>
             {{ floder.name }}
             <ul v-for="files in floder.files" :key="files.id">
-              <li>
+              <li v-if="files.name.includes('.xlsx')">
                 <v-icon class="file" name="file"/>{{ files.name }}
+              </li>
+              <li v-if="files.name.includes('.pdf')">
+                <pdf src="filse.store_name"><v-icon class="file" name="file"/>{{ files.name }}</pdf>
               </li>
             </ul>
           </li>
         </ul>
         <ul v-for="files in d.files" :key="files.id">
-          <li>
+          <li v-if="files.name.includes('.xlsx')">
             <v-icon class="file" name="file"/>{{ files.name }}
           </li>
+          <li v-if="files.name.includes('.pdf')">
+                <pdf src="filse.store_name"><v-icon class="file" name="file"/>{{ files.name }}</pdf>
+              </li>
         </ul>
       </li>
     </ul>
@@ -32,17 +38,22 @@
 <script>
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+import pdf from 'vue-pdf'
 export default {
   name: "FileExploer",
   props: ["dir", "name"],
   components: {
-    'v-icon': Icon
+    'v-icon': Icon,
+     pdf
   },
 
   methods: {
     open() {
       this.$emit("click-floder");
     },
+    setTypeFile(file) {
+      file.includes('.xlsx')
+    }
   },
 };
 </script>
