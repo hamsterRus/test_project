@@ -1,51 +1,46 @@
 <template>
-  <div id="app">
-    <!-- <HelloWorld :j='childJson' />
-    <hr/>
-    <HelloWorld :j='parentJson' />
-    <hr/> -->
-    <HelloWorld :dir='parentJson.data' >
-    </HelloWorld>
+  <div class="container" id="app">
     
+    <FileExploer @click-floder="fetchData" :dir='parentJson.data' />
 
+    <FileExploer :dir='childJson.data' />
 
-    <!-- <ul>
-      <li v-for="item in parentJson.data" :key="item.id">
-        {{ item.name }}
-        <ul>
-          <li v-for="i in item.under_folder" :key="i.id">
-            {{ i.name }}
-            <ul>
-              <li v-for="a in i.files" :key="a.id">
-                {{ a.name }}
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import parent from "./server/parent.json";
-import child from "./server/child.json";
+import FileExploer from "./components/FileExploer.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    FileExploer,
   },
   data() {
     return {
-      parentJson: parent,
-      childJson: child,
+      parentJson: '',
+      childJson: '',
     };
   },
+  mounted(){
+    fetch('https://raw.githubusercontent.com/hamsterRus/test_project/master/src/server/parent.json')
+      .then(res => res.json())
+      .then(data => this.parentJson = data)
+  },
+  methods:{
+    fetchData(){
+      fetch('https://raw.githubusercontent.com/hamsterRus/test_project/master/src/server/child.json')
+        .then(res => res.json())
+        .then(data => this.childJson = data)
+    }
+  }
 };
 </script>
 
-<style>
+<style lang="css">
+.container{
+  display: flex;
+}
+</style>>
 
-</style>
+
