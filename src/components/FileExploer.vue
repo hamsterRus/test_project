@@ -5,6 +5,7 @@
       <v-icon class="plus" name="plus"/>
     </header>
     <main class="content">
+    <div class="exploer">
     <ul v-for="d in dir" :key="d.id">
       <li @click.self="open">
         <v-icon class="folder" name="folder"/>
@@ -33,6 +34,7 @@
         </ul>
       </li>
     </ul>
+    </div>
     <pdf class="pdf" v-if="pdfClick" src="/git.pdf"/>
     </main>
     
