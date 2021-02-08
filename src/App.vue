@@ -2,7 +2,7 @@
   <div class="container" id="app">
     
     <FileExploer @click-floder="fetchData" :dir='parentJson.data' :name='nameParent' />
-    <FileExploer v-if="this.childJson" :name='nameChild' :dir='childJson.data' />
+    <FileExploer v-if="this.childJson" :name='nameChild' :dir='childJson.data'/>
 
   </div>
 </template>

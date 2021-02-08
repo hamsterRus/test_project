@@ -14,18 +14,18 @@
             <v-icon class="folder" name="folder"/>
             {{ floder.name }}
             <ul v-for="files in floder.files" :key="files.id">
-              <li v-if="files.name.includes('.xlsx')">
+              <li  @click="pdfClick? pdfClick = false : pdfClick = true" v-if="files.name.includes('.xlsx')">
                 <v-icon class="file" name="file"/>{{ files.name }}
               </li>
               <li v-if="files.name.includes('.pdf')">
-                <pdf src="filse.store_name"><v-icon class="file" name="file"/>{{ files.name }}</pdf>
+               <v-icon  class="file"  name="file"/>{{ files.name }}
               </li>
             </ul>
           </li>
         </ul>
         <ul v-for="files in d.files" :key="files.id">
-          <li v-if="files.name.includes('.xlsx')">
-            <v-icon class="file" name="file"/>{{ files.name }}
+          <li @click="pdfClick? pdfClick = false : pdfClick = true" v-if="files.name.includes('.xlsx')">
+            <v-icon  class="file" name="file"/>{{ files.name }}
           </li>
           <li v-if="files.name.includes('.pdf')">
                 <pdf src="filse.store_name"><v-icon class="file" name="file"/>{{ files.name }}</pdf>
@@ -33,7 +33,9 @@
         </ul>
       </li>
     </ul>
+    <pdf v-if="pdfClick" src="/git.pdf" ref="myPdfComponent"/>
     </main>
+    
   </div>
 </template>
 
@@ -47,6 +49,11 @@ export default {
   components: {
     'v-icon': Icon,
      pdf
+  },
+  data() {
+    return {
+      pdfClick: false
+    };
   },
 
   methods: {
