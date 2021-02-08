@@ -7,6 +7,8 @@
     <main class="content">
     <ul v-for="d in dir" :key="d.id">
       <li>
+        <v-icon class="folder" name="folder"/>
+            {{ d.name }}
         <ul v-for="floder in d.under_folder" :key="floder.id">
           <li @click.self="open">
             <v-icon class="folder" name="folder"/>
